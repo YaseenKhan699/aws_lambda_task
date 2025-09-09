@@ -1,0 +1,16 @@
+<input id="taskName" placeholder="Task Name">
+<button onclick="addTask()">Add Task</button>
+
+<script>
+const API_URL = 'YOUR_API_GATEWAY_ENDPOINT';
+
+async function addTask() {
+    const taskName = document.getElementById('taskName').value;
+    await fetch(API_URL + '/addTask', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({taskId: Date.now().toString(), taskName})
+    });
+    alert('Task added!');
+}
+</script>
